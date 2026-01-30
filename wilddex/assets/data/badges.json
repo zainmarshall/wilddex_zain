@@ -1,0 +1,161 @@
+[
+  {
+    "id": "first_discovery",
+    "name": "First Discovery",
+    "tier": "common",
+    "description": "Discover your first species.",
+    "criteria": { "type": "discover_count", "count": 1 }
+  },
+  {
+    "id": "explorer_1",
+    "name": "Explorer I",
+    "tier": "common",
+    "description": "Discover 10 species.",
+    "criteria": { "type": "discover_count", "count": 10 }
+  },
+  {
+    "id": "family_starter",
+    "name": "Family Starter",
+    "tier": "common",
+    "description": "Discover species in 3 different families.",
+    "criteria": { "type": "discover_distinct_family", "count": 3 }
+  },
+  {
+    "id": "park_visitor",
+    "name": "Park Visitor",
+    "tier": "common",
+    "description": "Discover 3 species from one park list.",
+    "criteria": { "type": "discover_in_park", "count": 3 }
+  },
+
+  {
+    "id": "explorer_2",
+    "name": "Explorer II",
+    "tier": "uncommon",
+    "description": "Discover 25 species.",
+    "criteria": { "type": "discover_count", "count": 25 }
+  },
+  {
+    "id": "family_collector",
+    "name": "Family Collector",
+    "tier": "uncommon",
+    "description": "Discover species in 8 different families.",
+    "criteria": { "type": "discover_distinct_family", "count": 8 }
+  },
+  {
+    "id": "order_hopper",
+    "name": "Order Hopper",
+    "tier": "uncommon",
+    "description": "Discover species in 5 different orders.",
+    "criteria": { "type": "discover_distinct_order", "count": 5 }
+  },
+  {
+    "id": "dawn_patrol",
+    "name": "Dawn Patrol",
+    "tier": "uncommon",
+    "description": "Make 3 discoveries between 5-9am.",
+    "criteria": { "type": "discover_time_of_day", "count": 3, "startHour": 5, "endHour": 9 }
+  },
+
+  {
+    "id": "explorer_3",
+    "name": "Explorer III",
+    "tier": "rare",
+    "description": "Discover 50 species.",
+    "criteria": { "type": "discover_count", "count": 50 }
+  },
+  {
+    "id": "class_act",
+    "name": "Class Act",
+    "tier": "rare",
+    "description": "Discover species in 5 different classes.",
+    "criteria": { "type": "discover_distinct_class", "count": 5 }
+  },
+  {
+    "id": "streak_5",
+    "name": "Streak 5",
+    "tier": "rare",
+    "description": "Maintain a 5-day discovery streak.",
+    "criteria": { "type": "streak_days", "count": 5 }
+  },
+  {
+    "id": "night_watch",
+    "name": "Night Watch",
+    "tier": "rare",
+    "description": "Make 3 discoveries between 9pm-12am.",
+    "criteria": { "type": "discover_time_of_day", "count": 3, "startHour": 21, "endHour": 24 }
+  },
+
+  {
+    "id": "explorer_4",
+    "name": "Explorer IV",
+    "tier": "epic",
+    "description": "Discover 100 species.",
+    "criteria": { "type": "discover_count", "count": 100 }
+  },
+  {
+    "id": "park_naturalist",
+    "name": "Park Naturalist",
+    "tier": "epic",
+    "description": "Discover 10 species from one park list.",
+    "criteria": { "type": "discover_in_park", "count": 10 }
+  },
+  {
+    "id": "streak_10",
+    "name": "Streak 10",
+    "tier": "epic",
+    "description": "Maintain a 10-day discovery streak.",
+    "criteria": { "type": "streak_days", "count": 10 }
+  },
+  {
+    "id": "time_crunch",
+    "name": "Time Crunch",
+    "tier": "epic",
+    "description": "Make 8 discoveries between 5pm-11pm.",
+    "criteria": { "type": "discover_time_of_day", "count": 8, "startHour": 17, "endHour": 23 }
+  },
+
+  {
+    "id": "explorer_5",
+    "name": "Explorer V",
+    "tier": "legendary",
+    "description": "Discover 200 species.",
+    "criteria": { "type": "discover_count", "count": 200 }
+  },
+  {
+    "id": "park_champion",
+    "name": "Park Champion",
+    "tier": "legendary",
+    "description": "Complete a park list.",
+    "criteria": { "type": "complete_any_park" }
+  },
+  {
+    "id": "order_master",
+    "name": "Order Master",
+    "tier": "legendary",
+    "description": "Discover species in 15 different orders.",
+    "criteria": { "type": "discover_distinct_order", "count": 15 }
+  },
+
+  {
+    "id": "explorer_6",
+    "name": "Explorer VI",
+    "tier": "mythic",
+    "description": "Discover 400 species.",
+    "criteria": { "type": "discover_count", "count": 400 }
+  },
+  {
+    "id": "class_master",
+    "name": "Class Master",
+    "tier": "mythic",
+    "description": "Discover species in 8 different classes.",
+    "criteria": { "type": "discover_distinct_class", "count": 8 }
+  },
+  {
+    "id": "marathon_week",
+    "name": "Marathon Week",
+    "tier": "mythic",
+    "description": "Make 20 discoveries between 7pm-12am.",
+    "criteria": { "type": "discover_time_of_day", "count": 20, "startHour": 19, "endHour": 24 }
+  }
+]

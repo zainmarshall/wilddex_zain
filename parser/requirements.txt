@@ -1,0 +1,4 @@
+requests
+progress
+progressbar2
+tqdm

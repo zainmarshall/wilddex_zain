@@ -1,0 +1,45 @@
+.env
+**/.env
+docs/
+docs/**
+
+# Flutter / Dart
+**/.dart_tool/
+**/.packages
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/build/
+**/.pub-cache/
+**/.pub/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/ephemeral/
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+**/android/app/debug.keystore
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+**/*.pyd
+**/*.so
+**/*.egg-info/
+**/.mypy_cache/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+
+# Node / SvelteKit
+**/node_modules/
+**/.svelte-kit/
+**/dist/
+**/build/
+**/.vite/
+**/.npm/
+**/.pnpm-store/
+
+# Website (ignore for now)
+website/
