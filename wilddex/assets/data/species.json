@@ -3857,7 +3857,7 @@
   },
   {
     "id": "mustela_erminea",
-    "common_name": "Stoat",
+    "common_name": "Short-tailed Weasel (Ermine), Stoat",
     "scientific_name": "mustela erminea",
     "iucn_status": "Least Concern",
     "classification": {
@@ -42961,7 +42961,7 @@
   },
   {
     "id": "canis_lupus",
-    "common_name": "Wolf",
+    "common_name": "Gray wolf",
     "scientific_name": "canis lupus",
     "iucn_status": "Least Concern",
     "classification": {

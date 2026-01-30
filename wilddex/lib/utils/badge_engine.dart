@@ -65,7 +65,7 @@ class BadgeEngine {
     final orders = _distinctValues(discoveredSpecies, (s) => s.classification?.order);
     final classes = _distinctValues(discoveredSpecies, (s) => s.classification?.class_);
 
-    final parkGuides = buildParkGuides(appData.speciesList);
+    final parkGuides = buildParkGuides(appData);
     final parkProgress = _parkProgress(parkGuides, discoveredIds);
     final timeOfDayCount = _discoveriesByTimeOfDay(userData);
     final streakDays = userData.streakDays ?? 0;

@@ -1,10 +1,13 @@
 import '../models/species.dart';
+import '../models/park.dart';
 import '../models/taxa.dart';
 import 'isar_models.dart';
 
 class AppData {
   final List<Species> speciesList;
   final List<Taxa> taxaList;
+  final List<Park> parksList;
+  final Map<String, Park> parksById;
   final Map<String, Species> speciesById;
   final Map<String, Species> speciesByGenusSpecies;
   final Map<String, List<Species>> speciesByFamily;
@@ -17,16 +20,21 @@ class AppData {
   AppData({
     required this.speciesList,
     required this.taxaList,
+    List<Park> parksList = const [],
+    Map<String, Park>? parksById,
     required this.speciesById,
     required this.speciesByGenusSpecies,
     required this.speciesByFamily,
     required this.taxaByRankName,
     required this.speciesByRankValue,
-  });
+  })  : parksList = parksList,
+        parksById =
+            parksById ?? {for (final park in parksList) park.id: park};
 
   static AppData fromJsonLists(
     List<dynamic> speciesJson,
     List<dynamic> taxaJson,
+    List<Park> parksList,
   ) {
     final speciesList = speciesJson
         .map((e) => Species.fromJson(e as Map<String, dynamic>))
@@ -82,6 +90,7 @@ class AppData {
     return AppData(
       speciesList: speciesList,
       taxaList: taxaList,
+      parksList: parksList,
       speciesById: speciesById,
       speciesByGenusSpecies: speciesByGenusSpecies,
       speciesByFamily: speciesByFamily,
@@ -93,6 +102,7 @@ class AppData {
   static AppData fromNormalizedJsonLists(
     List<dynamic> speciesJson,
     List<dynamic> taxaJson,
+    List<Park> parksList,
   ) {
     final taxaById = <String, Taxa>{};
     for (final raw in taxaJson) {
@@ -133,12 +143,13 @@ class AppData {
     }).toList(growable: false);
 
     final taxaList = taxaById.values.toList(growable: false);
-    return _buildIndices(speciesList, taxaList);
+    return _buildIndices(speciesList, taxaList, parksList: parksList);
   }
 
   static AppData fromEntities(
     List<SpeciesEntity> speciesEntities,
     List<TaxaEntity> taxaEntities,
+    List<Park> parksList,
   ) {
     final taxaList = taxaEntities
         .map(
@@ -175,7 +186,7 @@ class AppData {
         )
         .toList(growable: false);
 
-    return _buildIndices(speciesList, taxaList);
+    return _buildIndices(speciesList, taxaList, parksList: parksList);
   }
 
   static String? _taxonName(
@@ -197,8 +208,9 @@ class AppData {
 
   static AppData _buildIndices(
     List<Species> speciesList,
-    List<Taxa> taxaList,
-  ) {
+    List<Taxa> taxaList, {
+    List<Park> parksList = const [],
+  }) {
     final speciesById = <String, Species>{};
     final speciesByGenusSpecies = <String, Species>{};
     final speciesByFamily = <String, List<Species>>{};
@@ -246,12 +258,20 @@ class AppData {
     return AppData(
       speciesList: speciesList,
       taxaList: taxaList,
+      parksList: parksList,
       speciesById: speciesById,
       speciesByGenusSpecies: speciesByGenusSpecies,
       speciesByFamily: speciesByFamily,
       taxaByRankName: taxaByRankName,
       speciesByRankValue: speciesByRankValue,
     );
+  }
+
+  List<Species> speciesForPark(Park park) {
+    return park.speciesIds
+        .map((id) => speciesById[id])
+        .whereType<Species>()
+        .toList(growable: false);
   }
 
   static String _rankKey(String rank, String name) {

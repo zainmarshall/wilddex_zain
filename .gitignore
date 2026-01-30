@@ -18,6 +18,9 @@ docs/**
 **/android/local.properties
 **/android/key.properties
 **/android/app/debug.keystore
+**/ios/Runner/GoogleService-Info.plist
+**/android/app/google-services.json
+**/lib/firebase_options.dart
 
 # Python
 **/__pycache__/

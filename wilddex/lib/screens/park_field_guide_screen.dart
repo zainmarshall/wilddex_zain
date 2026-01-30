@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../data/app_data.dart';
 import '../models/species.dart';
 import '../models/taxa.dart';
 import '../theme/colors.dart';
@@ -20,7 +21,9 @@ class ParkFieldGuideScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final parks = buildParkGuides(speciesList);
+    final appData = Provider.of<AppData>(context, listen: false);
+    final allowedIds = speciesList.map((s) => s.id).toSet();
+    final parks = buildParkGuides(appData, allowedIds: allowedIds);
 
     return Scaffold(
       appBar: AppBar(
