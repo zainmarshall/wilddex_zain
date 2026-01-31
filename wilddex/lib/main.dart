@@ -6,6 +6,7 @@ import 'screens/dex_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/camera_tab.dart';
 import 'screens/park_field_guide_screen.dart';
+import 'screens/gallery_screen.dart';
 import 'utils/user_data_provider.dart';
 import 'utils/settings_provider.dart';
 import 'theme/colors.dart';
@@ -89,12 +90,13 @@ class _MainScreenState extends State<MainScreen> {
         speciesList: speciesList,
         taxaList: taxaList,
       ),
+      const CameraTabHost(),
       ParkFieldGuideScreen(
         key: ValueKey('field_${settings.useCoreDex}'),
         speciesList: speciesList,
         taxaList: taxaList,
       ),
-      const CameraTabHost(),
+      const GalleryScreen(),
       ProfileScreen(
         key: ValueKey('profile_${settings.useCoreDex}'),
         speciesList: speciesList,
@@ -112,8 +114,9 @@ class _MainScreenState extends State<MainScreen> {
         },
         destinations: const [
           NavigationDestination(icon: Icon(Icons.book), label: 'Dex'),
-          NavigationDestination(icon: Icon(Icons.map), label: 'Guides'),
           NavigationDestination(icon: Icon(Icons.camera_alt), label: 'Camera'),
+          NavigationDestination(icon: Icon(Icons.map), label: 'Guides'),
+          NavigationDestination(icon: Icon(Icons.photo_library), label: 'Gallery'),
           NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
