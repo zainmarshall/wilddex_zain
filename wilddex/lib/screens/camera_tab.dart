@@ -5,17 +5,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 import '../widgets/shutter_button.dart';
 import 'prediction_result_screen.dart';
-import '../constants.dart';
 import '../utils/photo_saver.dart';
+import '../utils/settings_provider.dart';
 
 const double kCameraMinZoom = 1.0 ; 
 const double kCameraMaxZoom = 189.0; //physical max before error is 189
 const String kSampleImageAsset = 'assets/data/lion.png';
 
-Future<Map<String, dynamic>> uploadImageAndGetPrediction(File imageFile) async {
-  final uri = Uri.parse('$apiBaseUrl/predict');
+Future<Map<String, dynamic>> uploadImageAndGetPrediction(
+  File imageFile, {
+  required String apiBaseUrl,
+  required bool useCrops,
+}) async {
+  final uri = Uri.parse('$apiBaseUrl/predict').replace(
+    queryParameters: {'use_crops': useCrops ? 'true' : 'false'},
+  );
   final request = http.MultipartRequest('POST', uri);
   request.files.add(await http.MultipartFile.fromPath('file', imageFile.path));
 
@@ -29,6 +36,7 @@ Future<Map<String, dynamic>> uploadImageAndGetPrediction(File imageFile) async {
 }
 
 Future<void> runPredictionFlow(BuildContext context, File imageFile) async {
+  final settings = Provider.of<SettingsProvider>(context, listen: false);
   Navigator.of(context).push(MaterialPageRoute(
     builder: (_) => PredictionResultScreen(
       imageFile: imageFile,
@@ -36,7 +44,11 @@ Future<void> runPredictionFlow(BuildContext context, File imageFile) async {
     ),
   ));
   try {
-    final prediction = await uploadImageAndGetPrediction(imageFile);
+    final prediction = await uploadImageAndGetPrediction(
+      imageFile,
+      apiBaseUrl: settings.apiBaseUrl,
+      useCrops: settings.useCropModel,
+    );
     final binomialName = prediction['scientific_name'] ?? 'unknown';
     await savePhotoToGallery(imageFile, binomialName: binomialName);
     if (!context.mounted) return;
